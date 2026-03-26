@@ -42,6 +42,15 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* ===== SKIP LINK ===== */
+.skip-link {
+  position: absolute; top: -100%; left: 1rem;
+  background: var(--green-dark); color: var(--white);
+  padding: 0.6rem 1.2rem; border-radius: 3px;
+  font-size: 0.9rem; z-index: 200; text-decoration: none;
+}
+.skip-link:focus { top: 0.5rem; }
+
 /* ===== NAV ===== */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -152,11 +161,6 @@ section { padding: 5rem 2rem; }
   position: relative;
 }
 .service-card:hover { transform: translateY(-3px); box-shadow: var(--card-shadow); }
-.service-card .card-icon {
-  width: 48px; height: 48px; border-radius: 50%;
-  background: var(--green-pale); display: flex; align-items: center; justify-content: center;
-  margin-bottom: 1.5rem; font-size: 1.3rem;
-}
 .service-card h3 {
   font-family: var(--font-display); font-size: 1.3rem;
   color: var(--green-dark); margin-bottom: 0.8rem;
@@ -323,8 +327,11 @@ footer .footer-tagline {
 </head>
 <body>
 
+<!-- SKIP NAV -->
+<a href="#services" class="skip-link">Skip to content</a>
+
 <!-- NAV -->
-<nav id="nav">
+<nav id="nav" aria-label="Main navigation">
   <div class="nav-inner">
     <a href="#" class="logo">Broccoli <span>Sprouts</span></a>
     <ul>
@@ -351,21 +358,21 @@ footer .footer-tagline {
 </section>
 
 <!-- SERVICES -->
-<section id="services">
+<main>
+<section id="services" aria-labelledby="services-title">
   <div class="container">
     <div class="section-label">What We Offer</div>
-    <h2 class="section-title">Services</h2>
+    <h2 class="section-title" id="services-title">Services</h2>
     <p class="section-intro">Practical support for people building something real. Every service is designed to get you from idea to income with clarity, accountability, and the tools to sustain it.</p>
 
     <div class="services-grid">
       <!-- Coaching -->
-      <div class="service-card fade-in">
-        <div class="card-icon">🌱</div>
-        <h3>Business Coaching</h3>
+      <div class="service-card fade-in" role="region" aria-labelledby="service-coaching">
+        <h3 id="service-coaching">Business Coaching</h3>
         <p>One-on-one strategic guidance for entrepreneurs, small business owners, and nonprofit leaders. We work through business formation, digital strategy, content planning, and growth using the Broccoli Sprouts Business Pipeline framework.</p>
         <div class="rate-table">
           <table>
-            <thead><tr><th>Service</th><th>Rate</th></tr></thead>
+            <thead><tr><th scope="col">Service</th><th scope="col">Rate</th></tr></thead>
             <tbody>
               <tr><td>Single Session (90 min)</td><td>$100</td></tr>
               <tr><td>Sprout Start (4 sessions)</td><td>$350</td></tr>
@@ -376,39 +383,43 @@ footer .footer-tagline {
         </div>
       </div>
 
-      <!-- Web Services -->
-      <div class="service-card fade-in">
-        <div class="card-icon">🌐</div>
-        <h3>Web Services</h3>
-        <p>Website design, social media setup, and digital infrastructure for small businesses and nonprofits. All packages include training so you can maintain your own site independently. Sliding scale available for mission-driven organizations.</p>
+      <!-- Digital Services -->
+      <div class="service-card fade-in" role="region" aria-labelledby="service-digital">
+        <h3 id="service-digital">Digital Services</h3>
+        <p>Full-service digital infrastructure for small businesses, makers, musicians, and nonprofits. We build your website, set up your platforms, connect your tools, and train you to run it all independently. Whether you need a storefront, a booking page, a Bandcamp profile, or a market vendor setup, we handle the technical so you can focus on the work.</p>
         <div class="rate-table">
           <table>
-            <thead><tr><th>Service</th><th>Rate</th></tr></thead>
+            <thead><tr><th scope="col">Service</th><th scope="col">Rate</th></tr></thead>
             <tbody>
-              <tr><td>Basic Website Build (5 pages)</td><td>$750 - $1,500</td></tr>
-              <tr><td>Social Media Setup + Training</td><td>$300 - $500</td></tr>
-              <tr><td>Newsletter Integration</td><td>$200 - $350</td></tr>
-              <tr><td>Monthly Retainer</td><td>$300 - $500/mo</td></tr>
+              <tr><td>Quick Start (single platform setup)</td><td>$150 - $250</td></tr>
+              <tr><td>Website Design + Development</td><td>$750 - $1,500</td></tr>
+              <tr><td>Platform Setup + Integration</td><td>$200 - $500</td></tr>
+              <tr><td>Social Media + Linktree Setup</td><td>$300 - $500</td></tr>
+              <tr><td>Musician Platforms (Bandcamp, DistroKid, etc.)</td><td>$200 - $400</td></tr>
+              <tr><td>Maker/Vendor Setup (Etsy, Square, Market Apps)</td><td>$200 - $400</td></tr>
+              <tr><td>Crowdfunding Campaign Setup</td><td>$200 - $400</td></tr>
               <tr><td>SEO Audit + Optimization</td><td>$250 - $400</td></tr>
             </tbody>
           </table>
         </div>
+        <p style="font-size: 0.82rem; color: var(--gray); margin-top: 1rem; line-height: 1.6;">Platforms: WordPress, Squarespace, Webflow, Shopify, Bandcamp, DistroKid, Etsy, Square, Kickstarter, GoFundMe, Mailchimp, Linktree, and more. Sliding scale for nonprofits.</p>
       </div>
 
-      <!-- Content + PR -->
-      <div class="service-card fade-in">
-        <div class="card-icon">📡</div>
-        <h3>Content + PR</h3>
-        <p>Professional writing, media strategy, and content production grounded in journalism ethics and over a decade of storytelling experience. From press releases to podcast production, we help you find your voice and reach your audience.</p>
+      <!-- Content, PR + Podcast -->
+      <div class="service-card fade-in" role="region" aria-labelledby="service-content">
+        <h3 id="service-content">Content, PR + Podcast</h3>
+        <p>Professional writing, media strategy, podcast creation, and digital production grounded in journalism ethics and over a decade of storytelling experience. We create and integrate a podcast into your existing business model as a marketing channel that sounds like you, not like an ad. From press releases to full editorial calendars, we help you find your voice and reach your audience.</p>
         <div class="rate-table">
           <table>
-            <thead><tr><th>Service</th><th>Rate</th></tr></thead>
+            <thead><tr><th scope="col">Service</th><th scope="col">Rate</th></tr></thead>
             <tbody>
+              <tr><td>Podcast Creation + Integration</td><td>$500 - $1,200</td></tr>
+              <tr><td>Podcast Episode Production</td><td>$300 - $500/ep</td></tr>
               <tr><td>Press Release</td><td>$150 - $300</td></tr>
               <tr><td>Monthly Content Package</td><td>$500 - $1,000/mo</td></tr>
               <tr><td>Grant Writing Support</td><td>$50 - $75/hr</td></tr>
               <tr><td>Media Kit / One-Pager</td><td>$200 - $350</td></tr>
-              <tr><td>Podcast Production</td><td>$300 - $500/ep</td></tr>
+              <tr><td>Digital Production + Design</td><td>$50 - $75/hr</td></tr>
             </tbody>
           </table>
         </div>
@@ -418,10 +429,10 @@ footer .footer-tagline {
 </section>
 
 <!-- PORTFOLIO -->
-<section id="portfolio">
+<section id="portfolio" aria-labelledby="portfolio-title">
   <div class="container">
     <div class="section-label">Selected Work</div>
-    <h2 class="section-title">Portfolio</h2>
+    <h2 class="section-title" id="portfolio-title">Portfolio</h2>
     <p class="section-intro">Journalism, podcast production, web development, video, GIS mapping, and community organizing. A selection of projects spanning radio, digital media, and public interest storytelling.</p>
 
     <div class="portfolio-grid">
@@ -525,28 +536,17 @@ footer .footer-tagline {
         </div>
       </a>
 
-      <a href="https://broccolisprouts.tumblr.com" target="_blank" rel="noopener" class="portfolio-item fade-in">
-        <div class="item-header">
-          <span class="item-category cat-web">Content Platform</span>
-          <h3>Broccoli Sprouts on Tumblr</h3>
-        </div>
-        <div class="item-body">
-          <p>The Broccoli Sprouts content platform. Original editorial content with a voice described as "Craigslist meets Farmer's Almanac meets Mad Magazine." Fermentation guides, local economy commentary, and community storytelling.</p>
-          <span class="item-link">broccolisprouts.tumblr.com &rarr;</span>
-        </div>
-      </a>
-
     </div>
   </div>
 </section>
 
 <!-- ABOUT -->
-<section id="about">
+<section id="about" aria-labelledby="about-title">
   <div class="container">
     <div class="about-content">
       <div>
         <div class="section-label">About</div>
-        <h2 class="section-title">Carrie Cantrell</h2>
+        <h2 class="section-title" id="about-title">Carrie Cantrell</h2>
         <div class="about-text">
           <p><strong>Founder, Broccoli Sprouts Local Economy Platform.</strong> Based in Brevard, North Carolina.</p>
           <p>I am a digital communications professional, journalist, and community organizer with over a decade of experience building media projects, training production teams, and supporting people in telling their own stories. My work sits at the intersection of technology, storytelling, and economic empowerment.</p>
@@ -573,35 +573,35 @@ footer .footer-tagline {
 </section>
 
 <!-- CONTACT -->
-<section id="contact">
+<section id="contact" aria-labelledby="contact-title">
   <div class="container">
     <div class="contact-grid">
       <div class="contact-info">
         <div class="section-label">Get Started</div>
-        <h3>Ready to grow?</h3>
+        <h3 id="contact-title">Ready to grow?</h3>
         <p>Whether you need a website, a business plan, a content strategy, or just someone to help you figure out the next step, send a message. First consultations are always free.</p>
         <div class="contact-detail">crrcantrell@gmail.com</div>
         <div class="contact-detail">Brevard, North Carolina</div>
-        <div class="contact-detail" style="margin-top: 1rem;"><a href="https://broccolisprouts.tumblr.com" target="_blank">broccolisprouts.tumblr.com</a></div>
-        <div class="contact-detail"><a href="https://www.linkedin.com/in/carrie-cantrell-audio/" target="_blank">linkedin.com/in/carrie-cantrell-audio</a></div>
+        <div class="contact-detail" style="margin-top: 1rem;"><a href="https://www.linkedin.com/in/carrie-cantrell-audio/" target="_blank">linkedin.com/in/carrie-cantrell-audio</a></div>
       </div>
       <div>
-        <form action="https://formspree.io/f/mpqoalgl" method="POST" id="contact-form">
+        <form action="https://formspree.io/f/xcontact" method="POST" id="contact-form" aria-label="Contact form">
           <div>
             <label for="name">Name</label>
             <input type="text" id="name" name="name" required placeholder="Your name">
           </div>
           <div>
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" required placeholder="your@email.com">
+            <input type="email" id="email" name="_replyto" required placeholder="your@email.com">
           </div>
           <div>
             <label for="service">Interested In</label>
             <select id="service" name="service">
               <option value="">Select a service</option>
               <option value="coaching">Business Coaching</option>
-              <option value="web">Web Services</option>
-              <option value="content">Content + PR</option>
+              <option value="digital">Digital Services + Web</option>
+              <option value="content">Content, PR + Podcast</option>
+              <option value="platform">Platform Setup + Integration</option>
               <option value="other">Something Else</option>
             </select>
           </div>
@@ -618,6 +618,7 @@ footer .footer-tagline {
     </div>
   </div>
 </section>
+</main>
 
 <!-- FOOTER -->
 <footer>
@@ -625,7 +626,6 @@ footer .footer-tagline {
   <p>Local Economy Platform &middot; Brevard, North Carolina</p>
   <p style="margin-top: 0.5rem;">
     <a href="mailto:crrcantrell@gmail.com">crrcantrell@gmail.com</a> &middot;
-    <a href="https://broccolisprouts.tumblr.com" target="_blank">Tumblr</a> &middot;
     <a href="https://www.linkedin.com/in/carrie-cantrell-audio/" target="_blank">LinkedIn</a>
   </p>
   <div class="footer-tagline">Growing thrivelihood from your kitchen counter.</div>
